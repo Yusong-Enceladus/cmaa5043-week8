@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Week 8 - VUI/CI & Prototype VIBE Design</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Hero -->
+  <header class="hero">
+    <div class="container">
+      <p class="tag">CMAA5043 &middot; Week 8 Design Activity</p>
+      <h1>VUI/CI Analysis &amp; Prototype VIBE Design</h1>
+      <p class="subtitle">Yusong Huang &middot; March 2026</p>
+      <nav class="hero-nav">
+        <a href="#activity1">Activity 8-1: VUI Analysis</a>
+        <a href="#activity2">Activity 8-2: Prototype</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Activity 8-1 -->
+  <section id="activity1" class="section">
+    <div class="container">
+      <h2 class="section-title">Activity 8-1 &mdash; Conversational UI Analysis</h2>
+      <p class="section-desc">
+        I chose <strong>Apple Siri</strong> as the Voice/Conversational Interface and had a multi-turn conversation
+        about <em>planning a 7-day trip to Japan</em>. Below is the reconstructed conversation with annotated
+        design patterns.
+      </p>
+
+      <!-- Conversation -->
+      <div class="chat-window">
+        <div class="chat-header">
+          <span class="dot green"></span>
+          <span class="chat-title">Siri &mdash; Travel Planning</span>
+        </div>
+        <div class="chat-body" id="chatBody">
+          <!-- Turns will be injected by JS -->
+        </div>
+      </div>
+
+      <!-- Heuristics Analysis -->
+      <h3 class="sub-title">Design Heuristics Analysis</h3>
+      <div class="cards">
+        <div class="card">
+          <div class="card-num">H1</div>
+          <h4>Visibility of System Status</h4>
+          <p>
+            Siri provides continuous feedback through visual waveform animations and auditory cues
+            ("ding" sound) when activated, clearly indicating listening, processing, and responding states.
+            In turns 1 and 5, Siri confirms receipt of the request before processing, keeping the user
+            informed of the system's current state.
+          </p>
+          <span class="badge">Nielsen #1</span>
+        </div>
+        <div class="card">
+          <div class="card-num">H2</div>
+          <h4>Error Recovery &amp; Repair</h4>
+          <p>
+            When Siri misunderstands a request (Turn 9), it offers a clarification prompt rather than
+            failing silently. The repair strategy uses explicit confirmation ("Did you mean...?") and
+            provides options, allowing the user to correct without restarting the entire conversation.
+          </p>
+          <span class="badge">Nielsen #9</span>
+        </div>
+        <div class="card">
+          <div class="card-num">H3</div>
+          <h4>Match Between System &amp; Real World</h4>
+          <p>
+            Siri uses natural, conversational language rather than system-oriented jargon.
+            Responses like "Sounds like a great trip!" (Turn 2) and "Here are some options"
+            mirror how a human travel agent would speak, reducing cognitive load.
+          </p>
+          <span class="badge">Nielsen #2</span>
+        </div>
+        <div class="card">
+          <div class="card-num">H4</div>
+          <h4>User Control &amp; Freedom</h4>
+          <p>
+            Users can interrupt Siri mid-response, say "go back," or rephrase at any point (Turn 11).
+            The system supports undo-like behavior by allowing topic changes without penalty,
+            giving users full control over the conversation flow.
+          </p>
+          <span class="badge">Nielsen #3</span>
+        </div>
+        <div class="card">
+          <div class="card-num">H5</div>
+          <h4>Recognition Rather Than Recall</h4>
+          <p>
+            Siri remembers context from earlier turns &mdash; when the user says "add that to my list"
+            (Turn 14), Siri understands "that" refers to the previously discussed restaurant.
+            This contextual memory reduces the user's need to repeat information.
+          </p>
+          <span class="badge">Nielsen #6</span>
+        </div>
+      </div>
+
+      <!-- Markers Summary -->
+      <h3 class="sub-title">Conversational Markers &amp; Patterns</h3>
+      <div class="markers-grid">
+        <div class="marker">
+          <h5>Turn-Taking Cues</h5>
+          <p>Siri uses rising intonation and explicit questions ("Would you like me to...?") to signal turn boundaries, preventing overlap.</p>
+        </div>
+        <div class="marker">
+          <h5>Confirmation Strategies</h5>
+          <p>Implicit confirmations ("Booking a flight to Tokyo on April 5th...") and explicit confirmations ("Is that correct?") maintain shared understanding.</p>
+        </div>
+        <div class="marker">
+          <h5>Grounding &amp; Repair</h5>
+          <p>When errors occur, Siri employs repair initiators: "I didn't quite get that" followed by suggestions, maintaining conversational flow.</p>
+        </div>
+        <div class="marker">
+          <h5>Context Persistence</h5>
+          <p>Siri maintains a conversation stack, referencing earlier topics without re-prompting. This enables multi-turn task completion.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Activity 8-2 -->
+  <section id="activity2" class="section alt-bg">
+    <div class="container">
+      <h2 class="section-title">Activity 8-2 &mdash; Prototype VIBE Design</h2>
+      <p class="section-desc">
+        Based on our course proposal, we designed a <strong>Smart Campus Navigator</strong> &mdash;
+        a voice-enabled mobile app that helps students navigate campus, find resources, and manage schedules
+        through conversational interaction. Below are the low-fi and hi-fi prototypes.
+      </p>
+
+      <!-- Lo-fi Wireframes -->
+      <h3 class="sub-title">Low-Fi Paper Prototype</h3>
+      <div class="wireframe-grid">
+        <div class="wireframe">
+          <div class="wireframe-screen">
+            <div class="wf-status-bar">
+              <span>9:41</span>
+              <span>|||</span>
+            </div>
+            <div class="wf-header">Campus Navigator</div>
+            <div class="wf-search">
+              <div class="wf-search-icon">&#x1F50D;</div>
+              <div class="wf-search-text">Search or ask...</div>
+              <div class="wf-mic-icon">&#x1F399;</div>
+            </div>
+            <div class="wf-card-placeholder">
+              <div class="wf-card-line w80"></div>
+              <div class="wf-card-line w60"></div>
+              <div class="wf-card-line w40"></div>
+            </div>
+            <div class="wf-card-placeholder">
+              <div class="wf-card-line w70"></div>
+              <div class="wf-card-line w50"></div>
+            </div>
+            <div class="wf-card-placeholder">
+              <div class="wf-card-line w90"></div>
+              <div class="wf-card-line w60"></div>
+              <div class="wf-card-line w30"></div>
+            </div>
+            <div class="wf-nav-bar">
+              <span>Home</span><span>Map</span><span>Chat</span><span>Profile</span>
+            </div>
+          </div>
+          <p class="wireframe-label">Home / Dashboard</p>
+        </div>
+
+        <div class="wireframe">
+          <div class="wireframe-screen">
+            <div class="wf-status-bar">
+              <span>9:41</span>
+              <span>|||</span>
+            </div>
+            <div class="wf-header">&larr; Voice Assistant</div>
+            <div class="wf-chat-area">
+              <div class="wf-bubble wf-bot">Hi! Where do you need to go?</div>
+              <div class="wf-bubble wf-user">Library Building W3</div>
+              <div class="wf-bubble wf-bot">Found it! 5 min walk. Start?</div>
+              <div class="wf-bubble wf-user">Yes</div>
+            </div>
+            <div class="wf-input-bar">
+              <div class="wf-input-field">Type or speak...</div>
+              <div class="wf-mic-btn">&#x1F399;</div>
+            </div>
+          </div>
+          <p class="wireframe-label">Chat / Voice Interface</p>
+        </div>
+
+        <div class="wireframe">
+          <div class="wireframe-screen">
+            <div class="wf-status-bar">
+              <span>9:41</span>
+              <span>|||</span>
+            </div>
+            <div class="wf-header">&larr; Campus Map</div>
+            <div class="wf-map-area">
+              <div class="wf-map-placeholder">
+                <div class="wf-route-line"></div>
+                <div class="wf-pin wf-pin-start">A</div>
+                <div class="wf-pin wf-pin-end">B</div>
+              </div>
+            </div>
+            <div class="wf-map-info">
+              <div class="wf-card-line w60"></div>
+              <div class="wf-card-line w40"></div>
+            </div>
+            <div class="wf-nav-bar">
+              <span>Home</span><span>Map</span><span>Chat</span><span>Profile</span>
+            </div>
+          </div>
+          <p class="wireframe-label">Map Navigation</p>
+        </div>
+      </div>
+
+      <!-- Hi-fi Prototype -->
+      <h3 class="sub-title">Hi-Fi Interactive Prototype</h3>
+      <p class="section-desc">Built with generative UI tools. Click the phone screens to interact.</p>
+
+      <div class="hifi-grid">
+        <!-- Phone 1: Dashboard -->
+        <div class="phone-frame">
+          <div class="phone-screen" id="dashboardScreen">
+            <div class="app-status-bar">
+              <span>9:41</span>
+              <div class="status-icons">
+                <span class="signal"></span>
+                <span class="wifi"></span>
+                <span class="battery"></span>
+              </div>
+            </div>
+            <div class="app-header">
+              <div class="greeting">
+                <h3>Good Morning,</h3>
+                <h2>Yusong</h2>
+              </div>
+              <div class="avatar">YH</div>
+            </div>
+            <div class="quick-actions">
+              <button class="action-btn" onclick="showToast('Finding nearest study room...')">
+                <span class="action-icon">&#x1F4DA;</span>
+                <span>Study Room</span>
+              </button>
+              <button class="action-btn" onclick="showToast('Opening cafeteria menu...')">
+                <span class="action-icon">&#x1F37D;</span>
+                <span>Dining</span>
+              </button>
+              <button class="action-btn" onclick="showToast('Loading campus shuttle tracker...')">
+                <span class="action-icon">&#x1F68C;</span>
+                <span>Shuttle</span>
+              </button>
+              <button class="action-btn" onclick="showToast('Opening event calendar...')">
+                <span class="action-icon">&#x1F4C5;</span>
+                <span>Events</span>
+              </button>
+            </div>
+            <div class="upcoming-card">
+              <div class="upcoming-label">NEXT UP</div>
+              <div class="upcoming-event">
+                <div class="event-time">10:30 AM</div>
+                <div class="event-detail">
+                  <div class="event-name">CMAA5043 Lecture</div>
+                  <div class="event-loc">W1-301 &middot; 15 min away</div>
+                </div>
+                <button class="navigate-btn" onclick="showToast('Starting navigation to W1-301...')">Go</button>
+              </div>
+              <div class="upcoming-event">
+                <div class="event-time">2:00 PM</div>
+                <div class="event-detail">
+                  <div class="event-name">Group Meeting</div>
+                  <div class="event-loc">Library W3-201</div>
+                </div>
+                <button class="navigate-btn" onclick="showToast('Starting navigation to W3-201...')">Go</button>
+              </div>
+            </div>
+            <div class="voice-fab" onclick="showToast('Listening... Try saying: Where is the nearest printer?')">
+              <span>&#x1F399;</span>
+            </div>
+            <div class="app-tab-bar">
+              <div class="tab active"><span class="tab-icon">&#x1F3E0;</span><span>Home</span></div>
+              <div class="tab"><span class="tab-icon">&#x1F5FA;</span><span>Map</span></div>
+              <div class="tab"><span class="tab-icon">&#x1F4AC;</span><span>Chat</span></div>
+              <div class="tab"><span class="tab-icon">&#x1F464;</span><span>Profile</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Phone 2: Chat -->
+        <div class="phone-frame">
+          <div class="phone-screen" id="chatScreen">
+            <div class="app-status-bar">
+              <span>9:42</span>
+              <div class="status-icons">
+                <span class="signal"></span>
+                <span class="wifi"></span>
+                <span class="battery"></span>
+              </div>
+            </div>
+            <div class="chat-app-header">
+              <span class="back-arrow">&larr;</span>
+              <div class="chat-bot-info">
+                <div class="bot-avatar">&#x1F916;</div>
+                <div>
+                  <div class="bot-name">Campus Assistant</div>
+                  <div class="bot-status">Online</div>
+                </div>
+              </div>
+            </div>
+            <div class="chat-messages" id="protoChat">
+              <div class="msg bot">
+                <div class="msg-bubble">Hi Yusong! How can I help you today?</div>
+                <div class="msg-time">9:40 AM</div>
+              </div>
+              <div class="msg user">
+                <div class="msg-bubble">Where can I print documents near W1?</div>
+                <div class="msg-time">9:41 AM</div>
+              </div>
+              <div class="msg bot">
+                <div class="msg-bubble">
+                  There are 2 printers near W1:<br/>
+                  <strong>1. W1-102</strong> &mdash; B&amp;W, available now<br/>
+                  <strong>2. W1-G05</strong> &mdash; Color, 1 job in queue<br/>
+                  Would you like directions?
+                </div>
+                <div class="msg-time">9:41 AM</div>
+              </div>
+              <div class="msg user">
+                <div class="msg-bubble">Yes, take me to W1-102</div>
+                <div class="msg-time">9:42 AM</div>
+              </div>
+              <div class="msg bot">
+                <div class="msg-bubble">
+                  Starting navigation to <strong>W1-102</strong>.<br/>
+                  Estimated walk: 2 minutes.<br/>
+                  <span class="msg-link" onclick="showToast('Opening indoor map...')">View on map &rarr;</span>
+                </div>
+                <div class="msg-time">9:42 AM</div>
+              </div>
+            </div>
+            <div class="chat-input-bar">
+              <input type="text" placeholder="Ask anything..." class="chat-input" id="protoInput" />
+              <button class="send-btn" onclick="sendProtoMsg()">&#x2191;</button>
+              <button class="mic-btn-small" onclick="showToast('Listening...')">&#x1F399;</button>
+            </div>
+            <div class="app-tab-bar">
+              <div class="tab"><span class="tab-icon">&#x1F3E0;</span><span>Home</span></div>
+              <div class="tab"><span class="tab-icon">&#x1F5FA;</span><span>Map</span></div>
+              <div class="tab active"><span class="tab-icon">&#x1F4AC;</span><span>Chat</span></div>
+              <div class="tab"><span class="tab-icon">&#x1F464;</span><span>Profile</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Phone 3: Map -->
+        <div class="phone-frame">
+          <div class="phone-screen" id="mapScreen">
+            <div class="app-status-bar">
+              <span>9:43</span>
+              <div class="status-icons">
+                <span class="signal"></span>
+                <span class="wifi"></span>
+                <span class="battery"></span>
+              </div>
+            </div>
+            <div class="chat-app-header">
+              <span class="back-arrow">&larr;</span>
+              <div class="chat-bot-info">
+                <div class="bot-name">Campus Map</div>
+              </div>
+            </div>
+            <div class="map-view">
+              <svg viewBox="0 0 300 350" class="campus-map-svg">
+                <!-- Campus buildings -->
+                <rect x="30" y="40" width="80" height="50" rx="6" class="building b-active" />
+                <text x="70" y="70" class="bldg-label">W1</text>
+                <rect x="140" y="30" width="70" height="60" rx="6" class="building" />
+                <text x="175" y="65" class="bldg-label">W2</text>
+                <rect x="50" y="130" width="90" height="55" rx="6" class="building" />
+                <text x="95" y="162" class="bldg-label">W3 Library</text>
+                <rect x="180" y="120" width="75" height="50" rx="6" class="building" />
+                <text x="217" y="150" class="bldg-label">W4</text>
+                <rect x="80" y="230" width="100" height="45" rx="6" class="building" />
+                <text x="130" y="257" class="bldg-label">E1</text>
+                <!-- Route -->
+                <path d="M70 90 L70 130 L95 130" class="route-path" />
+                <!-- Pins -->
+                <circle cx="70" cy="90" r="8" class="pin-start" />
+                <text x="70" y="94" class="pin-label">A</text>
+                <circle cx="95" cy="130" r="8" class="pin-end" />
+                <text x="95" y="134" class="pin-label">B</text>
+                <!-- Compass -->
+                <text x="260" y="30" class="compass">N&#x2191;</text>
+              </svg>
+            </div>
+            <div class="map-bottom-sheet">
+              <div class="sheet-handle"></div>
+              <div class="route-info">
+                <div class="route-from">
+                  <span class="route-dot start"></span>
+                  <span>W1-102 (Current)</span>
+                </div>
+                <div class="route-to">
+                  <span class="route-dot end"></span>
+                  <span>W3 Library</span>
+                </div>
+              </div>
+              <div class="route-meta">
+                <span>5 min walk</span>
+                <span>&middot;</span>
+                <span>350m</span>
+              </div>
+              <button class="start-nav-btn" onclick="showToast('Turn-by-turn navigation started!')">Start Navigation</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Design Features -->
+      <h3 class="sub-title">Key Design Features</h3>
+      <div class="features-grid">
+        <div class="feature">
+          <div class="feature-icon">&#x1F399;</div>
+          <h4>Voice-First Navigation</h4>
+          <p>Hands-free campus navigation with natural language queries. Ask "Where is the nearest printer?" and get instant directions with indoor mapping.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">&#x1F4AC;</div>
+          <h4>Contextual Chat Assistant</h4>
+          <p>AI-powered conversational interface that understands campus-specific queries, maintains context across turns, and provides actionable suggestions.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">&#x1F5FA;</div>
+          <h4>Smart Campus Map</h4>
+          <p>Interactive indoor/outdoor map with real-time building info, route planning, and points of interest filtered by student needs.</p>
+        </div>
+      </div>
+
+      <!-- Peer Feedback -->
+      <h3 class="sub-title">Peer Feedback</h3>
+      <div class="feedback-section">
+        <div class="feedback-card">
+          <div class="feedback-avatar">Peer</div>
+          <div class="feedback-content">
+            <p class="feedback-name">Design Critique Partner</p>
+            <p class="feedback-text">
+              "The voice-first approach is well-suited for campus navigation &mdash; students often have their hands full.
+              Consider adding haptic feedback for turn-by-turn navigation and a 'quick reply' chip system in the chat
+              to speed up common interactions. The dashboard layout is clean and prioritizes the right information."
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>CMAA5043 &middot; Creative Prototyping: Designing Interactive Experiences</p>
+      <p>Yusong Huang &middot; HKUST(GZ) &middot; Spring 2026</p>
+    </div>
+  </footer>
+
+  <!-- Toast -->
+  <div class="toast" id="toast"></div>
+
+  <script src="main.js"></script>
+</body>
+</html>
